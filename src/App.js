@@ -109,7 +109,6 @@ function App () {
   })
 
   const rotateCamera = useCallback(() => {
-    console.log(initialViewState.bearing)
     setInitialViewState((viewState) => ({
       ...viewState,
       bearing: viewState.bearing + 120,
@@ -126,8 +125,6 @@ function App () {
     ({ viewState, interactionState, oldViewState }) => {
       const { isDragging, isPanning, isRotating, isZooming } = interactionState
       if (isDragging || isPanning || isRotating || isZooming) {
-        console.log('mving')
-
         setInitialViewState((viewState) => ({
           ...viewState,
           transitionDuration: 0,
