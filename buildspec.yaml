@@ -18,17 +18,11 @@ phases:
       nodejs: 14
     commands:
       - echo installing . . .
-      - yarn install
-  pre_build:
-    commands:
-      - echo Not Running tests . . .
-      # - CI=true yarn test
-      
+      - yarn install      
   build:
     commands:
       - echo Starting build . . .
       - yarn run build
-
 artifacts:
   files:
     - '**/*'
