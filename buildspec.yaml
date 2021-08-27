@@ -1,9 +1,5 @@
 version: 0.2
 
-
-REACT_APP_MAP_BOX_STYLE_ID="mapbox://styles/fraserc/ckbe9euif0blw1jmldqxe9a1n"
-REACT_APP_MAP_LEAFLET_KEY="pk.eyJ1IjoiZnJhc2VyYyIsImEiOiJjazJ2dWx6bHMwOGRiM2RueGJoZnhyazhnIn0._uqEizdOhsnp3SLJEK1iVw"
-
 env:
   variables:
     NODE_ENV: "${env}"

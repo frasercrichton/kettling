@@ -119,7 +119,7 @@ function App () {
 
       transitionInterruption: TRANSITION_EVENTS.BREAK
     }))
-  }, [initialViewState])
+  }, [])
 
   const onViewStateChange = useCallback(
     ({ viewState, interactionState, oldViewState }) => {
