@@ -1,0 +1,43 @@
+version: 0.2
+
+env:
+  variables:
+    NODE_ENV: "${env}"
+    REACT_APP_MAP_LEAFLET_KEY: "${REACT_APP_MAP_LEAFLET_KEY}"
+    REACT_APP_MAP_LEAFLET_ID: "${REACT_APP_MAP_LEAFLET_ID}"
+
+    parameter-store:
+    REACT_APP_MAP_LEAFLET_KEY: REACT_APP_MAP_LEAFLET_KEY
+    REACT_APP_MAP_LEAFLET_ID: "${REACT_APP_MAP_LEAFLET_ID}"
+
+  exported-variables:
+    - REACT_APP_MAP_LEAFLET_KEY
+    - REACT_APP_MAP_LEAFLET_ID
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 14
+    commands:
+      - echo installing . . .
+      - npm install
+  pre_build:
+    commands:
+      - echo Not Running tests . . .
+      # - CI=true yarn test
+      
+  build:
+    commands:
+      - echo Starting build . . .
+      - npm cache clean --force
+      - npm run build
+
+artifacts:
+  files:
+    - '**/*'
+  name: "web-dist-$(date +%Y-%m-%d)"
+  base-directory: build
+
+cache:
+  paths:
+    - /root/.npm/**/*
