@@ -16,12 +16,11 @@ import { StaticMap } from 'react-map-gl';
 // eslint-disable-next-line import/no-webpack-loader-syntax
 mapboxgl.workerClass = require('worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker').default
 
-const MAPBOX_ACCESS_TOKEN = process.env.REACT_APP_MAP_LEAFLET_KEY
+const MAP_BOX_ACCESS_TOKEN = process.env.REACT_APP_MAP_LEAFLET_KEY
 const MAP_BOX_STYLE_ID = process.env.REACT_APP_MAP_BOX_STYLE_ID
 const transitionInterpolator = new LinearInterpolator({
   transitionProps: ['bearing', 'zoom']
 })
-
 
 const geoJsonLayer = {
   id: 'geojson-layer',
@@ -37,7 +36,6 @@ const geoJsonLayer = {
   getLineWidth: 3,
   opacity: 0.5
 }
-
 
 const gridLayer = {
   id: 'GridLayer',
@@ -135,16 +133,6 @@ function App () {
 
         }))
       }
-
-      // setInitialViewState((viewState) => (
-      // {
-      //   latitude: viewState.latitude,
-      //   longitude: viewState.longitude,
-      //   zoom: viewState.zoom,
-      //   bearing: viewState.bearing,
-      //   pitch: viewState.pitch,
-      //   transitionInterruption:TRANSITION_EVENTS.BREAK
-      // }));
     },
     []
   )
@@ -167,8 +155,7 @@ function App () {
 
     rotateCamera()
   }, [rotateCamera])
-  // onInteractionStateChange
-  // LightingEffect
+
   return (
     <DeckGL
       ref={deckRef}
@@ -187,7 +174,7 @@ function App () {
         <StaticMap
           ref={mapRef}
           gl={glContext}
-          mapboxApiAccessToken={MAPBOX_ACCESS_TOKEN}
+          mapboxApiAccessToken={MAP_BOX_ACCESS_TOKEN}
           mapStyle={MAP_BOX_STYLE_ID}
           onLoad={onMapLoad}
         />
