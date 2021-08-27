@@ -3,10 +3,8 @@ version: 0.2
 env:
   variables:
     NODE_ENV: "${env}"
-    REACT_APP_MAP_LEAFLET_KEY: "${REACT_APP_MAP_LEAFLET_KEY}"
-    REACT_APP_MAP_BOX_STYLE_ID: "${REACT_APP_MAP_BOX_STYLE_ID}"
 
-    parameter-store:
+  parameter-store:
     REACT_APP_MAP_LEAFLET_KEY: REACT_APP_MAP_LEAFLET_KEY
     REACT_APP_MAP_BOX_STYLE_ID: REACT_APP_MAP_BOX_STYLE_ID
 
