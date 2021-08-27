@@ -6,10 +6,16 @@ import { GridLayer } from "@deck.gl/aggregation-layers";
 import { MapboxLayer } from "@deck.gl/mapbox";
 import { LinearInterpolator } from "@deck.gl/core";
 
-import { StaticMap } from "react-map-gl";
 
 import policePrecincts from "./Police_Districts.geojson";
 import data from "./clean.json";
+
+import mapboxgl from "mapbox-gl";
+
+import { StaticMap } from "react-map-gl";
+
+// eslint-disable-next-line import/no-webpack-loader-syntax
+mapboxgl.workerClass = require("worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker").default;
 
 const MAPBOX_ACCESS_TOKEN = process.env.REACT_APP_MAP_LEAFLET_KEY
 const MAP_LEAFLET_ID = process.env.REACT_APP_MAP_LEAFLET_ID
