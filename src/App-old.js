@@ -6,7 +6,7 @@ import { GridLayer, HeatmapLayer } from '@deck.gl/aggregation-layers';
 import { MapboxLayer } from '@deck.gl/mapbox';
 import { LinearInterpolator } from '@deck.gl/core';
 
-import policePrecincts from './Police_Districts.geojson';
+import policePrecincts from './Police_Districts.geojson'
 import data from './clean.json'
 
 import mapboxgl from 'mapbox-gl'
@@ -22,86 +22,24 @@ const transitionInterpolator = new LinearInterpolator({
   transitionProps: ['bearing', 'zoom']
 })
 
-const geoJsonLayer = {
-  id: 'geojson-layer',
-  data: policePrecincts,
-  stroked: true,
-  filled: true,
-  wireframe: true,
-  extruded: false,
-  lineWidthScale: 1,
-  lineWidthMinPixels: 3,
-  getFillColor: [255, 0, 0, 0],
-  getLineColor: [0, 0, 255, 255],
-  getLineWidth: 3,
-  opacity: 0.5
-}
-
-const gridLayer = {
-  id: 'GridLayer',
-  data,
-  pickable: true,
-  extruded: true,
-  cellSize: 150,
-  elevationScale: 3,
-  colorRange: [
-    [37, 37, 37],
-    [99, 99, 99],
-    [150, 150, 150],
-    [189, 189, 189],
-    [217, 217, 217],
-    [247, 247, 247]
-  ],
-  getElevationValue: data.count,
-  getPosition: (d) => d.COORDINATES
-}
-
 const heatMapLayer = new HeatmapLayer({
-  id: 'heatmapLayer',
+  id: 'HeatmapLayer',
   data,
-  radiusPixels: 25,
+  // radiusPixels: 25,
   getPosition: (d) => d.COORDINATES,
-  getWeight: (d) => d.count,
-  aggregation: 'SUM'
+  getWeight: (d) => Number(d.count)
+  // aggregation: 'SUM',
+  // colorRange: [
+  //   [37, 37, 37],
+  //   [99, 99, 99],
+  //   [150, 150, 150],
+  //   [189, 189, 189],
+  //   [217, 217, 217],
+  //   [247, 247, 247]
+  // ],
 })
 
-const layers = [new GeoJsonLayer(geoJsonLayer), 
-  heatMapLayer]
-
-const buildingLayer = {
-  id: '3d-buildings',
-  source: 'composite',
-  // type: PolygonLayer,
-  'source-layer': 'building',
-  filter: ['==', 'extrude', 'true'],
-  type: 'fill-extrusion',
-  minzoom: 10,
-  paint: {
-    'fill-extrusion-color': '#aaa',
-
-    // use an 'interpolate' expression to add a smooth transition effect to the
-    // buildings as the user zooms in
-    'fill-extrusion-height': [
-      'interpolate',
-      ['linear'],
-      ['zoom'],
-      10,
-      0,
-      10.05,
-      ['get', 'height']
-    ],
-    'fill-extrusion-base': [
-      'interpolate',
-      ['linear'],
-      ['zoom'],
-      10,
-      0,
-      10.05,
-      ['get', 'min_height']
-    ],
-    'fill-extrusion-opacity': 0.6
-  }
-}
+const layers = [heatMapLayer]
 
 function App () {
   // DeckGL and mapbox will both draw into this WebGL context
@@ -158,16 +96,15 @@ function App () {
 
 
     // map.addLayer(new MapboxLayer({ id: 'GridLayer', deck }), firstLabelLayerId)
-    map.addLayer(new MapboxLayer({ id: 'HeatMapLayer', deck }), firstLabelLayerId)
-    map.addLayer(
-      new MapboxLayer({ id: 'geojson-layer', deck }),
-      firstLabelLayerId
-    )
-  map.addLayer(buildingLayer, firstLabelLayerId)
+    // map.addLayer(
+    //   new MapboxLayer({ id: 'geojson-layer', deck }),
+    //   firstLabelLayerId
+    // )
+     map.addLayer(new MapboxLayer({ id: 'HeatmapLayer', deck }), firstLabelLayerId)
+    
+    // map.addLayer(buildingLayer, firstLabelLayerId)
 
-    map.addLayer(heatMapLayer, firstLabelLayerId)
-
-
+    // map.addLayer(heatMapLayer, firstLabelLayerId)
     rotateCamera()
   }, [rotateCamera])
 
@@ -193,6 +130,14 @@ function App () {
           mapStyle={MAP_BOX_STYLE_ID}
           onLoad={onMapLoad}
         />
+
+        // <HeatmapLayer 
+        //   id='HeatmapLayer'
+        //   data={data}
+        //   radiusPixels={25}
+        //   getPosition={ (d) => d.COORDINATES}
+        //   getWeight={ (d) => Number(d.count)}
+        // />
       )}
     </DeckGL>
   )
