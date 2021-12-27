@@ -7,7 +7,6 @@ import { MapboxLayer } from '@deck.gl/mapbox';
 import { LinearInterpolator } from '@deck.gl/core';
 import mapboxgl from 'mapbox-gl'
 import { StaticMap } from 'react-map-gl'
-
 import policePrecincts from './Police_Districts.geojson';
 import data from './clean.json'
 // eslint-disable-next-line import/no-webpack-loader-syntax
@@ -15,7 +14,7 @@ mapboxgl.workerClass = require('worker-loader!mapbox-gl/dist/mapbox-gl-csp-worke
 
 const MAP_BOX_ACCESS_TOKEN = process.env.REACT_APP_MAP_LEAFLET_KEY
 const MAP_BOX_STYLE_ID = process.env.REACT_APP_MAP_BOX_STYLE_ID
-const minZoom = 10
+const minZoom = 12
 
 const transitionInterpolator = new LinearInterpolator({
   transitionProps: ['bearing', 'zoom']
@@ -100,7 +99,7 @@ function App() {
     latitude: 38.914751,
     longitude: -77.032112,
     zoom: 11,
-    // minZoom: 9,
+    minZoom,
     bearing: 0,
     pitch: 45
   })
@@ -109,7 +108,7 @@ function App() {
     setInitialViewState((viewState) => ({
       ...viewState,
       bearing: viewState.bearing + 120,
-      zoom: (viewState.zoom <= minZoom) ? viewState.zoom + 0.8 : viewState.zoom,
+      zoom: (viewState.zoom <= 11) ? viewState.zoom + 0.8 : viewState.zoom,
       transitionDuration: 7000,
       transitionInterpolator,
       onTransitionEnd: rotateCamera,
