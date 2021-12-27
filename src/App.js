@@ -14,7 +14,9 @@ mapboxgl.workerClass = require('worker-loader!mapbox-gl/dist/mapbox-gl-csp-worke
 
 const MAP_BOX_ACCESS_TOKEN = process.env.REACT_APP_MAP_LEAFLET_KEY
 const MAP_BOX_STYLE_ID = process.env.REACT_APP_MAP_BOX_STYLE_ID
-const minZoom = 12
+const minZoom = 11
+const zoom = 10
+const zoomTarget = 12
 
 const transitionInterpolator = new LinearInterpolator({
   transitionProps: ['bearing', 'zoom']
@@ -72,7 +74,7 @@ const buildingLayer = {
       'interpolate',
       ['linear'],
       ['zoom'],
-      minZoom,
+      zoom,
       0,
       10.05,
       ['get', 'height']
@@ -81,7 +83,7 @@ const buildingLayer = {
       'interpolate',
       ['linear'],
       ['zoom'],
-      minZoom,
+      zoom,
       0,
       10.05,
       ['get', 'min_height']
@@ -98,7 +100,7 @@ function App() {
   const [initialViewState, setInitialViewState] = useState({
     latitude: 38.914751,
     longitude: -77.032112,
-    zoom: 11,
+    zoom,
     minZoom,
     bearing: 0,
     pitch: 45
@@ -108,7 +110,7 @@ function App() {
     setInitialViewState((viewState) => ({
       ...viewState,
       bearing: viewState.bearing + 120,
-      zoom: (viewState.zoom <= 11) ? viewState.zoom + 0.8 : viewState.zoom,
+      zoom: (viewState.zoom <= zoomTarget) ? viewState.zoom + 0.8 : viewState.zoom,
       transitionDuration: 7000,
       transitionInterpolator,
       onTransitionEnd: rotateCamera,
