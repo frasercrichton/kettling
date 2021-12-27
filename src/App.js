@@ -2,22 +2,21 @@ import React, { useState, useRef, useCallback } from 'react';
 import DeckGL from '@deck.gl/react';
 import { TRANSITION_EVENTS } from 'deck.gl';
 import { GeoJsonLayer } from '@deck.gl/layers';
-import { GridLayer, HeatmapLayer } from '@deck.gl/aggregation-layers';
+import { GridLayer } from '@deck.gl/aggregation-layers';
 import { MapboxLayer } from '@deck.gl/mapbox';
 import { LinearInterpolator } from '@deck.gl/core';
+import mapboxgl from 'mapbox-gl'
+import { StaticMap } from 'react-map-gl'
 
 import policePrecincts from './Police_Districts.geojson';
 import data from './clean.json'
-
-import mapboxgl from 'mapbox-gl'
-
-import { StaticMap } from 'react-map-gl'
-
 // eslint-disable-next-line import/no-webpack-loader-syntax
 mapboxgl.workerClass = require('worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker').default
 
 const MAP_BOX_ACCESS_TOKEN = process.env.REACT_APP_MAP_LEAFLET_KEY
 const MAP_BOX_STYLE_ID = process.env.REACT_APP_MAP_BOX_STYLE_ID
+const minZoom = 10
+
 const transitionInterpolator = new LinearInterpolator({
   transitionProps: ['bearing', 'zoom']
 })
@@ -42,31 +41,20 @@ const gridLayer = {
   data,
   pickable: true,
   extruded: true,
-  cellSize: 150,
-  elevationScale: 3,
+  cellSize: 200,
   colorRange: [
-    [37, 37, 37],
-    [99, 99, 99],
-    [150, 150, 150],
-    [189, 189, 189],
-    [217, 217, 217],
-    [247, 247, 247]
+    [99, 0, 0],
+    [150, 0, 0],
+    [189, 0, 0],
+    [217, 0, 0],
+    [247, 0, 0]
   ],
-  getElevationValue: data.count,
+  elevationScale: 6,
   getPosition: (d) => d.COORDINATES
 }
 
-const heatMapLayer = new HeatmapLayer({
-  id: 'heatmapLayer',
-  data,
-  radiusPixels: 25,
-  getPosition: (d) => d.COORDINATES,
-  getWeight: (d) => d.count,
-  aggregation: 'SUM'
-})
-
-const layers = [new GeoJsonLayer(geoJsonLayer), 
-  heatMapLayer]
+const layers = [new GeoJsonLayer(geoJsonLayer),
+new GridLayer(gridLayer)]
 
 const buildingLayer = {
   id: '3d-buildings',
@@ -75,7 +63,7 @@ const buildingLayer = {
   'source-layer': 'building',
   filter: ['==', 'extrude', 'true'],
   type: 'fill-extrusion',
-  minzoom: 10,
+  minZoom,
   paint: {
     'fill-extrusion-color': '#aaa',
 
@@ -85,7 +73,7 @@ const buildingLayer = {
       'interpolate',
       ['linear'],
       ['zoom'],
-      10,
+      minZoom,
       0,
       10.05,
       ['get', 'height']
@@ -94,7 +82,7 @@ const buildingLayer = {
       'interpolate',
       ['linear'],
       ['zoom'],
-      10,
+      minZoom,
       0,
       10.05,
       ['get', 'min_height']
@@ -103,7 +91,7 @@ const buildingLayer = {
   }
 }
 
-function App () {
+function App() {
   // DeckGL and mapbox will both draw into this WebGL context
   const [glContext, setGLContext] = useState()
   const deckRef = useRef(null)
@@ -111,7 +99,8 @@ function App () {
   const [initialViewState, setInitialViewState] = useState({
     latitude: 38.914751,
     longitude: -77.032112,
-    zoom: 10,
+    zoom: 11,
+    // minZoom: 9,
     bearing: 0,
     pitch: 45
   })
@@ -120,11 +109,10 @@ function App () {
     setInitialViewState((viewState) => ({
       ...viewState,
       bearing: viewState.bearing + 120,
-      zoom: (viewState.zoom <= 12) ? viewState.zoom + 0.8 : viewState.zoom,
+      zoom: (viewState.zoom <= minZoom) ? viewState.zoom + 0.8 : viewState.zoom,
       transitionDuration: 7000,
       transitionInterpolator,
       onTransitionEnd: rotateCamera,
-
       transitionInterruption: TRANSITION_EVENTS.BREAK
     }))
   }, [])
@@ -157,17 +145,13 @@ function App () {
     ).id
 
 
-    // map.addLayer(new MapboxLayer({ id: 'GridLayer', deck }), firstLabelLayerId)
-    map.addLayer(new MapboxLayer({ id: 'HeatMapLayer', deck }), firstLabelLayerId)
+    map.addLayer(new MapboxLayer({ id: 'GridLayer', deck }), firstLabelLayerId)
     map.addLayer(
       new MapboxLayer({ id: 'geojson-layer', deck }),
       firstLabelLayerId
     )
-  map.addLayer(buildingLayer, firstLabelLayerId)
-
-    map.addLayer(heatMapLayer, firstLabelLayerId)
-
-
+    map.addLayer(buildingLayer, firstLabelLayerId)
+    map.addLayer(gridLayer, firstLabelLayerId)
     rotateCamera()
   }, [rotateCamera])
 

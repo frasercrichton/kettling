@@ -1,16 +1,44 @@
 # Kettling
 
-https://mpdc.dc.gov/page/may-2020-april-2021-unrest-related-arrests-and-persons-interest
+
+[May 2020-April 2021 Unrest-Related Arrests and Persons of Interest
+](https://mpdc.dc.gov/page/may-2020-april-2021-unrest-related-arrests-and-persons-interest)
+
+From Saturday, May 30 through 7 am on Sunday, April 18, 2021, there have been 742 individuals arrested and processed for curfew violations, riot-related burglary, and other riot-related events. Of these, 28 were juveniles.
+
+NOTE: Days with zero arrests are not listed below.
+
+May/June 2020: There were 449 unrest-related arrests, comprised of:
+
+    90: Sunday night 5/31 into Monday morning 6/1 (curfew in effect at 11pm) (10 juveniles)
+    289: Monday night 6/1 into Tuesday morning 6/2 (curfew in effect at 7pm) (9 juveniles)
+    29: Tuesday night 6/2 into Wednesday morning 6/3 (curfew in effect at 7pm) (4 juveniles)
+    1: Friday night 6/5 into Saturday morning 6/6 (Simple Assault) (0 juveniles)
+    1: Saturday morning 6/6 into Sunday morning 6/7 (0 juveniles)
+    1: Sunday morning 6/7 into Monday morning 6/8 (0 juveniles)
+    1: Saturday afternoon 6/13 into Sunday afternoon 6/14 (0 juveniles)
+    1: Saturday afternoon 6/20 into Sunday morning 6/21 (0 juveniles)
+    2: Monday afternoon 6/22 into Tuesday morning 6/23 (0 juveniles)
+    9: Tuesday afternoon 6/23 into Wednesday morning 6/24 (0 juveniles)
+    1: Wednesday afternoon 6/24 into Thursday morning 6/25 (0 juveniles)
+    3: Friday afternoon 6/26 into Saturday morning 6/27 (0 juveniles)
+    2: Sunday afternoon 6/28 into Monday morning 6/29 (0 juveniles)
+
+1,027 charges have been filed against the 742 individuals. These charges are in the following categories:
+
+    395 (39%) Curfew Violations
+    111 (11%): Felony Rioting (tumultuous and violent conduct with grave danger of or actual serious injury to persons or serious property damage)
+    60 (6%): Burglary
+    73 (7%): Assault on a police officer
+    38 (3%): Other property crimes (damaging, receiving stolen)
+    47 (5%): Unlawful entry
+    51 (5%): Simple assaults and threats
+    35 (3%): Resisting arrest
+    81 (7%): Weapons violations
+    136 (13%): Other (ADW, disorderly, riot misdemeanor, narcotics, traffic, release violations, arson, lewd, indecent, or obscene acts)
 
 
 
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
 
 ### `yarn start`
 
@@ -34,43 +62,3 @@ The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
