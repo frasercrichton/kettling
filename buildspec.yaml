@@ -18,6 +18,7 @@ phases:
       nodejs: 14
     commands:
       - echo installing . . .
+      - rm -rf .git
       - yarn install      
   build:
     commands:
