@@ -6,7 +6,7 @@ import { GridLayer } from '@deck.gl/aggregation-layers';
 import { MapboxLayer } from '@deck.gl/mapbox';
 import { LinearInterpolator } from '@deck.gl/core';
 import mapboxgl from 'mapbox-gl'
-import { StaticMap } from 'react-map-gl'
+import { StaticMap, NavigationControl } from 'react-map-gl'
 import policePrecincts from './Police_Districts.geojson';
 import data from './clean.json'
 // eslint-disable-next-line import/no-webpack-loader-syntax
@@ -17,6 +17,11 @@ const MAP_BOX_STYLE_ID = process.env.REACT_APP_MAP_BOX_STYLE_ID
 const minZoom = 11
 const zoom = 10
 const zoomTarget = 12
+
+const navControlStyle = {
+  right: 10,
+  top: 10
+};
 
 const transitionInterpolator = new LinearInterpolator({
   transitionProps: ['bearing', 'zoom']
@@ -44,11 +49,11 @@ const gridLayer = {
   extruded: true,
   cellSize: 200,
   colorRange: [
-    [99, 0, 0],
-    [150, 0, 0],
-    [189, 0, 0],
-    [217, 0, 0],
-    [247, 0, 0]
+    [0, 191, 255],
+    [8, 146, 208],
+    [0, 115, 207],
+    [21,96,189],
+    [0, 0, 205]
   ],
   elevationScale: 6,
   getPosition: (d) => d.COORDINATES
@@ -65,6 +70,7 @@ const buildingLayer = {
   filter: ['==', 'extrude', 'true'],
   type: 'fill-extrusion',
   minZoom,
+  maxZoom: 12,
   paint: {
     'fill-extrusion-color': '#aaa',
 
@@ -127,9 +133,7 @@ function App() {
           transitionDuration: 0,
           transitionInterpolator,
           // onTransitionEnd: rotateCamera,
-
           transitionInterruption: TRANSITION_EVENTS.BREAK
-
         }))
       }
     },
@@ -146,7 +150,9 @@ function App() {
     ).id
 
 
-    map.addLayer(new MapboxLayer({ id: 'GridLayer', deck }), firstLabelLayerId)
+    map.addLayer(
+      new MapboxLayer({ id: 'GridLayer', deck }), 
+      firstLabelLayerId)
     map.addLayer(
       new MapboxLayer({ id: 'geojson-layer', deck }),
       firstLabelLayerId
@@ -162,7 +168,7 @@ function App() {
       layers={layers}
       initialViewState={initialViewState}
       onViewStateChange={onViewStateChange}
-      controller
+      controller={true}
       onWebGLInitialized={setGLContext}
       glOptions={{
         /* To render vector tile polygons correctly */
@@ -177,7 +183,13 @@ function App() {
           mapboxApiAccessToken={MAP_BOX_ACCESS_TOKEN}
           mapStyle={MAP_BOX_STYLE_ID}
           onLoad={onMapLoad}
-        />
+        >
+          <div className='mapboxgl-ctrl-bottom-right' style={{ position: "absolute", right: 30, top: 120, zIndex: 1 }}>
+            <NavigationControl
+              style={navControlStyle}
+              onViewportChange={viewport => this.setState({ viewport })} />
+          </div>
+        </StaticMap>
       )}
     </DeckGL>
   )
