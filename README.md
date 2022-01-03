@@ -37,7 +37,9 @@ May/June 2020: There were 449 unrest-related arrests, comprised of:
     81 (7%): Weapons violations
     136 (13%): Other (ADW, disorderly, riot misdemeanor, narcotics, traffic, release violations, arson, lewd, indecent, or obscene acts)
 
+## Available:
 
+[https://d3bun1a589g4ul.cloudfront.net](https://d3bun1a589g4ul.cloudfront.net)
 
 
 ### `yarn start`
