@@ -27,3 +27,44 @@
     transform: rotate(360deg);
   }
 }
+
+.info-panel {
+  font: 14px / 20px Helvetica, Arial, sans-serif;
+position: absolute;
+top: 0px;
+right: 0px;
+width: 344px;
+background: rgb(255, 255, 255) none repeat scroll 0% 0%;
+box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+margin: 24px;
+padding: 10px 24px;
+max-height: 96%;
+/* overflow: hidden auto; */
+outline: currentcolor none medium;
+z-index: 10;
+}
+
+.metrics-layout {
+  display: table;
+  width: 100%;
+}
+
+.info-panel-heading {
+  font: bold 16px / 24px Helvetica, Arial, sans-serif;
+} 
+
+.info-panel-metrics {
+width: 50%;
+font-size: 0.833em;
+display: table-cell; 
+text-transform: uppercase;
+vertical-align: top;
+}
+
+.info-panel-metrics strong {
+  display: block;
+font-size: 3em;
+font-weight: bold;
+line-height: 1.833;
+white-space: nowrap;
+}

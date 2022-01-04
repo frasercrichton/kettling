@@ -37,6 +37,9 @@ May/June 2020: There were 449 unrest-related arrests, comprised of:
     81 (7%): Weapons violations
     136 (13%): Other (ADW, disorderly, riot misdemeanor, narcotics, traffic, release violations, arson, lewd, indecent, or obscene acts)
 
+    No. of people Arrests: 742
+      
+
 ## Available:
 
 [https://d3bun1a589g4ul.cloudfront.net](https://d3bun1a589g4ul.cloudfront.net)
@@ -59,8 +62,3 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 
 Builds the app for production to the `build` folder.\
 It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
