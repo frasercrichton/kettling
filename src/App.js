@@ -168,7 +168,7 @@ function App() {
       </div> */}
       </DeckGL>
 
-      <div className='info-panel' style={{ position: "absolute", right: 30, top: 100, zIndex: 100, backgroundColor: '#ffffff' }}>
+      <div className='info-panel'>
         <div className='info-panel-heading'>Unrest-Related Arrests Washington DC</div>
         <p>Arrests by location  Curfew Violation police precincts</p>
         <p>

@@ -29,19 +29,20 @@
 }
 
 .info-panel {
-  font: 14px / 20px Helvetica, Arial, sans-serif;
+font: 10px / 14px Helvetica, Arial, sans-serif;
 position: absolute;
-top: 0px;
+bottom: 0px;
 right: 0px;
 width: 344px;
 background: rgb(255, 255, 255) none repeat scroll 0% 0%;
 box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-margin: 24px;
+margin: 4px;
 padding: 10px 24px;
-max-height: 96%;
+max-height: 76%;
 /* overflow: hidden auto; */
 outline: currentcolor none medium;
 z-index: 10;
+opacity: 0.8;
 }
 
 .metrics-layout {
@@ -50,7 +51,7 @@ z-index: 10;
 }
 
 .info-panel-heading {
-  font: bold 16px / 24px Helvetica, Arial, sans-serif;
+  font: bold 14px / 18px Helvetica, Arial, sans-serif;
 } 
 
 .info-panel-metrics {
@@ -63,7 +64,7 @@ vertical-align: top;
 
 .info-panel-metrics strong {
   display: block;
-font-size: 3em;
+font-size: 2em;
 font-weight: bold;
 line-height: 1.833;
 white-space: nowrap;
