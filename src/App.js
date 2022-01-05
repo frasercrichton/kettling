@@ -169,8 +169,8 @@ function App() {
       </DeckGL>
 
       <div className='info-panel'>
-        <div className='info-panel-heading'>Unrest-Related Arrests Washington DC</div>
-        <p>Arrests by location  Curfew Violation police precincts</p>
+        <div className='info-panel-heading'>Washington DC Metropolitan Police Department (MPD) - Unrest-Related Arrests</div>
+        <p>Arrests by location contrasted wih arrests for Curfew Violation across MPD police precincts</p>
         <p>
           Datasource: <a href="https://mpdc.dc.gov/page/may-2020-april-2021-unrest-related-arrests-and-persons-interest">May 2020-April 2021 Unrest-Related Arrests and Persons of Interest</a>
         </p>
