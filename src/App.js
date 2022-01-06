@@ -184,7 +184,7 @@ function App() {
           <div className="info-panel-metrics">
             No. of Curfew Violation Arrests:
             <div className="info-panel-metrics">
-              <strong>393</strong>
+              <strong>395</strong>
             </div>
           </div>
         </div>
