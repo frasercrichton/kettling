@@ -17,8 +17,8 @@ import curfewViolationArrestData from './curfew-violation-arrest-data.json'
 // eslint-disable-next-line import/no-webpack-loader-syntax
 mapboxgl.workerClass = require('worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker').default
 
-const MAP_BOX_ACCESS_TOKEN = process.env.REACT_APP_MAP_LEAFLET_KEY
-const MAP_BOX_STYLE_ID = process.env.REACT_APP_MAP_BOX_STYLE_ID
+const MAP_BOX_ACCESS_TOKEN = process.env.REACT_APP_KETTLING_MAP_BOX_KEY
+const MAP_BOX_STYLE_ID = process.env.REACT_APP_KETTLING_MAP_BOX_STYLE_ID
 const minZoom = 11
 const zoom = 10
 const zoomTarget = 12
